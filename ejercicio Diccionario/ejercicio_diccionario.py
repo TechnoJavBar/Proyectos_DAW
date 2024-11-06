@@ -17,18 +17,20 @@ def cargar_lista(nombreFichero):
     
     return lista_diccionario
 
-def guardar_lista(diccionario, nombreFichero):
-    with open(nombreFichero,"w") as fichero:
-        for cancion, autor in diccionario.items():
-            #fichero.write(cancion+"-"+autor+"\n")
-            fichero.write(f"{cancion} - {autor}\n")
+def agregar_cancion(lista, cancion, autor, genero):
+    # if cancion in diccionario:
+    #     print(f"La cancion {cancion} ya se encuentra en la lista.")
+    # else:
+    #     diccionario[cancion]= autor
+    #     print(f"La cancion {cancion} se ha añadido correctamente.")
+    diccionario= {
+        "cancion": cancion,
+        "autor": autor,
+        "genero": genero
+    }
 
-def agregar_cancion(diccionario, cancion, autor):
-    if cancion in diccionario:
-        print(f"La cancion {cancion} ya se encuentra en la lista.")
-    else:
-        diccionario[cancion]= autor
-        print(f"La cancion {cancion} se ha añadido correctamente.")
+    lista.append(diccionario)
+    return lista
 
 def eliminar_cancion(diccionario, cancion):
     if cancion in diccionario:
@@ -36,5 +38,15 @@ def eliminar_cancion(diccionario, cancion):
     else:
         print(f"La cancion {cancion} no se encuentra en la lista.")
 
+def guardar_lista(diccionario, nombreFichero):
+    with open(nombreFichero,"w") as fichero:
+        for cancion, autor in diccionario.items():
+            #fichero.write(cancion+"-"+autor+"\n")
+            fichero.write(f"{cancion} - {autor}\n")
 
-print(cargar_lista("ejercicio Diccionario\\playlist.txt"))
+############################################################################
+playlist= cargar_lista("ejercicio Diccionario\\playlist.txt")
+print(playlist)
+
+print("##############################################################################")
+print(agregar_cancion(playlist,"Nuestra cancion","Alvaro de luna","pop"))
