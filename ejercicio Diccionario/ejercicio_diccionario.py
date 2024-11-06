@@ -2,17 +2,20 @@
 
 def cargar_lista(nombreFichero):
     lista_diccionario= []
-    contador= len(lista_diciconario)
+    diccionario={}
 
     with open(nombreFichero,"r") as fichero:
         for linea in fichero:
-            contador += 1 #se utiliza para contar el numero de canciones y asi llamar los diccionarios diferentes
             cancion, autor, genero = linea.strip().split("-")
-            diccionario= {"cancion": cancion, "autor": autor, "genero": genero} #se debe de crear un diccionario por cada cancion
+            diccionario= {
+                "cancion": cancion, 
+                "autor": autor, 
+                "genero": genero
+                } #se debe de crear un diccionario por cada cancion
             lista_diccionario.append(diccionario)
             
     
-    return diccionario
+    return lista_diccionario
 
 def guardar_lista(diccionario, nombreFichero):
     with open(nombreFichero,"w") as fichero:
@@ -32,3 +35,6 @@ def eliminar_cancion(diccionario, cancion):
         del diccionario[cancion]
     else:
         print(f"La cancion {cancion} no se encuentra en la lista.")
+
+
+print(cargar_lista("ejercicio Diccionario\\playlist.txt"))
