@@ -59,13 +59,19 @@ def guardar_lista(lista, nombreFichero):
     with open(nombreFichero,"w") as fichero:
         for diccionario in lista:
             fichero.write(f"{diccionario['cancion']}-{diccionario['autor']}-{diccionario['genero']}\n")
-        # for cancion, autor in diccionario.items():
-        #     fichero.write(cancion+"-"+autor+"\n")
-        #     fichero.write(f"{cancion} - {autor}\n")
 
 ############################################################################
-playlist= cargar_lista("ejercicio Diccionario\\playlist.txt")
 
-print(agregar_cancion(playlist,"Brisa","Paul thin","pop"))
-eliminar_cancion(playlist,"Nuestra cancion","Alvaro de luna")
+
+playlist= cargar_lista("ejercicio Diccionario\\playlist.txt")
+cancion= input("Introduce el nombre de la canción a añadir: ")
+autor= input("Introduce el nombre del artista: ")
+genero= input("Introduce el género: ")
+
+print(agregar_cancion(playlist,cancion, autor, genero))
+
+cancion= input("Introduce el nombre de la canción a borrar: ")
+autor= input("Introduce el nombre del artista: ")
+
+eliminar_cancion(playlist,cancion,autor)
 guardar_lista(playlist, "ejercicio Diccionario\\playlist.txt")
