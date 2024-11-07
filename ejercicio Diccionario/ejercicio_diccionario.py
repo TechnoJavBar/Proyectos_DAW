@@ -47,13 +47,12 @@ def eliminar_cancion(lista, cancion, artista):
     return lista
 
 def buscar_cancion(nombre, lista):
-    esta = False
-    for diccionario in lista:
-        if diccionario['cancion'] == nombre:
-            esta= True
     
-    return esta
-    print(esta)
+    for i,diccionario in enumerate(lista):
+        if diccionario['cancion'] == nombre:
+            return i
+            break
+    
 
 def guardar_lista(lista, nombreFichero):
     with open(nombreFichero,"w") as fichero:
