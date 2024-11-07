@@ -40,10 +40,7 @@ def eliminar_cancion(lista, cancion, artista):
     if not found:
         print(f"La cancion {cancion} del artista {artista} no se encuentra en la lista.")
     else:
-        for diccionario in lista:
-            if diccionario['cancion']==cancion and diccionario['autor']==artista:
-                lista.remove(diccionario)
-                print(f"La cancion {cancion} de {artista} ha sido eliminada.")
+        del lista[found]
     return lista
 
 def buscar_cancion(nombre, lista):
@@ -51,7 +48,7 @@ def buscar_cancion(nombre, lista):
     for i,diccionario in enumerate(lista):
         if diccionario['cancion'] == nombre:
             return i
-            break
+    return -1
     
 
 def guardar_lista(lista, nombreFichero):
