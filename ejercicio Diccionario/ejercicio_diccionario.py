@@ -19,6 +19,23 @@ def cargar_lista(nombreFichero):
         print("No se ha encontrado el fichero")
         return []
 
+def cargar_lista_json(nombreFichero):
+    lista=[]
+    try:
+        with open(nombreFichero, "r") as fichero:
+            for linea in fichero:
+                nombre, autor, genero = linea.strip().split("-")
+                diccionario= {
+                    "cancion": cancion,
+                    "autor": autor,
+                    "genero": genero
+                }
+
+                lista.append(diccionario)
+                return lista
+    except FileNotFoundError:
+        print("No se ha encontrado el archivo")
+        return []
 def agregar_cancion(lista, cancion, autor, genero):
     
     esta = buscar_cancion(cancion,lista)
