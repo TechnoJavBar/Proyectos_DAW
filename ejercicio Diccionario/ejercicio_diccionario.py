@@ -41,6 +41,7 @@ def eliminar_cancion(lista, cancion, artista):
         print(f"La cancion {cancion} del artista {artista} no se encuentra en la lista.")
     else:
         del lista[found]
+        print(f"La cancion {cancion} de {artista} se ha eliminado correctamente")
     return lista
 
 def buscar_cancion(nombre, lista):
