@@ -2,21 +2,22 @@
 
 def cargar_lista(nombreFichero):
     lista_diccionario= []
-
-    with open(nombreFichero,"r") as fichero:
-        for linea in fichero:
-            cancion, autor, genero = linea.strip().split("-")
-            
-            #se debe de crear un diccionario por cada cancion
-            diccionario= {
-                "cancion": cancion, 
-                "autor": autor, 
-                "genero": genero
-                } 
-            lista_diccionario.append(diccionario)
-            
-    
-    return lista_diccionario
+    try:
+        with open(nombreFichero,"r") as fichero:
+            for linea in fichero:
+                cancion, autor, genero = linea.strip().split("-")
+                
+                #se debe de crear un diccionario por cada cancion
+                diccionario= {
+                    "cancion": cancion, 
+                    "autor": autor, 
+                    "genero": genero
+                    } 
+                lista_diccionario.append(diccionario)            
+        return lista_diccionario
+    except FileNotFoundError:
+        print("No se ha encontrado el fichero")
+        return []
 
 def agregar_cancion(lista, cancion, autor, genero):
     
